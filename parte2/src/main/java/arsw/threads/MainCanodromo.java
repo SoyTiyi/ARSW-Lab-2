@@ -36,13 +36,21 @@ public class MainCanodromo {
                             // inicia los hilos
                             galgos[i].start();
                         }
+
+                        for(int i =0; i<can.getNumCarriles();i++){
+                            try {
+                                galgos[i].join();
+                            } catch (Exception e) {
+                                System.out.println("F");
+                            }
+
+                        }
                         can.winnerDialog(reg.getGanador(), reg.getUltimaPosicionAlcanzada() - 1);
                         System.out.println("El ganador fue:" + reg.getGanador());
                     }
                 }.start();
-                }
             }
-        );
+        });
 
         can.setStopAction(
                 new ActionListener() {
