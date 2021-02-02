@@ -57,6 +57,9 @@ public class MainCanodromo {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Carrera pausada!");
+                        for(int i =0; i<can.getNumCarriles();i++){
+                            galgos[i].stop(true);
+                        }
                     }
                 }
         );
@@ -66,6 +69,9 @@ public class MainCanodromo {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Carrera reanudada!");
+                        for(int i =0; i<can.getNumCarriles();i++){
+                            galgos[i].stop(false);
+                        }
                     }
                 }
         );

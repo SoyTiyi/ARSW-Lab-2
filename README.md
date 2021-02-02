@@ -64,9 +64,22 @@ Parte III
     dichas inconsistencias). A partir de esto, identifique las regiones
     críticas () del programa.
 
+    Según nuestro criterio, las regiones criticas que encontramos en el programa son los métodos (getUltimaPosicionAlcanzada() y setUltimaPosicionAlcanzada()) de la Clase RegistroLlegada, ya que estos son los métodos en los cuales se le asigna la posición de llegada a cada galgo, teniendo en cuenta la ultima posición de llegada de otro galgo, esto es un problema ya que es posible que dos galgos al mismo tiempo hagan set de la variable y puedan ver el valor corrupto, por lo cual, estos métodos deben de tener algún bloqueo y sincronización para que el programa funcione correctamente.
+
+    ![](./img/media/regionesCriticas.png)
+
+    Otra sección critica que creemos importante proteger es en el momento en donde se clasifica el ganador, porque solo debe de haber uno y si no se sincroniza este bloque de código es posible que dos galgos tengan la posición 1.
+
+    ![](./img/media/ganador.png)
+
+
 3.  Utilice un mecanismo de sincronización para garantizar que a dichas
     regiones críticas sólo acceda un hilo a la vez. Verifique los
     resultados.
+
+    ![](./img/media/sincRegiones.png)
+
+    ![](./img/media/ganadorSincronizado.png)
 
 4.  Implemente las funcionalidades de pausa y continuar. Con estas,
     cuando se haga clic en ‘Stop’, todos los hilos de los galgos
